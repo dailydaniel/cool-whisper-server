@@ -28,7 +28,12 @@ mix deps.get
 ```
 5. Run the server:
 ```bash
-mix run --no-halt -- --batch_size 3 --batch_timeout 3000 --client host --model openai/whisper-tiny --port 4000
+mix run --no-halt -- \
+    --batch_size 3 \
+    --batch_timeout 3000 \
+    --client host \
+    --model openai/whisper-tiny \
+    --port 4000
 ```
 ### Configuration Parameters
 - --batch_size (default: 3): Number of audio files to process in a batch.
