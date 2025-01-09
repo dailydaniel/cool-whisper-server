@@ -1,6 +1,6 @@
 # Whisper Inference Server
 
-Whisper Inference Server is an Elixir-based HTTP server for running inference on audio files using OpenAI’s Whisper model. The server supports batching for efficient inference, CPU/GPU execution via EXLA backend, and can be configured dynamically at runtime through command-line parameters.
+Whisper Inference Server is an OpenAI compatible Elixir-based HTTP server for running inference on audio files using OpenAI’s Whisper model. The server supports batching for efficient inference, CPU/GPU execution via EXLA backend, and can be configured dynamically at runtime through command-line parameters.
 
 ### Features
 - Batching: Process multiple audio files simultaneously to optimize inference.
@@ -42,6 +42,25 @@ mix run --no-halt -- \
     --model openai/whisper-tiny \
     --port 4000
 ```
+### How to use
+1. With curl:
+```bash
+curl -X POST -F "file=@some_audio.wav" http://localhost:4000/infer
+```
+2. With Python:
+```python3
+from openai import OpenAI
+
+HOST = 'localhost'
+PORT = 4000
+client = OpenAI(api_key="None", base_url=f"http://{HOST}:{PORT}/v1/")
+
+file_path = "some_audio.wav"
+audio_file = open(file_path, "rb")
+transcription = client.audio.transcriptions.create(
+    model="whisper-1", file=audio_file, response_format="text"  # response format: text | json
+)
+```
 ### Configuration Parameters
 - --batch_size (default: 3): Number of audio files to process in a batch.
 - --batch_timeout (default: 3000): Maximum wait time (in ms) for batch formation.
@@ -54,9 +73,5 @@ Send a POST request with an audio file to the /infer endpoint. For example:
 curl -X POST -F "file=@path/to/audio.wav" http://localhost:4000/infer
 ```
 The server will return the transcription result in JSON format.
-### Future Plans
-- OpenAI-like endpoints: Replace the current /infer endpoint with OpenAI-compatible API endpoints for easier integration.
-- Memory usage control: Implement logic to monitor and manage memory usage during inference, ensuring stability.
-- Support for CUDA device selection: Allow specifying the GPU device ID for inference, e.g., --device 0.
 ### Contributing
 Contributions, issues, and feature requests are welcome. Feel free to submit a pull request or open an issue in the repository.
