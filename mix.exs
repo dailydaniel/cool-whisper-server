@@ -11,7 +11,6 @@ defmodule WhisperServer.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger],
@@ -19,13 +18,12 @@ defmodule WhisperServer.MixProject do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:bumblebee, github: "elixir-nx/bumblebee"},
       {:exla, "~> 0.9.2"},
       {:nx, "~> 0.9.2"},
-      {:plug_cowboy, "~> 2.5"} # Для HTTP-сервера
+      {:plug_cowboy, "~> 2.5"}
     ]
   end
 end
