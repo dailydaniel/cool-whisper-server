@@ -20,7 +20,7 @@ sudo apt install ffmpeg
 3. Clone the repository:
 ```bash
 git clone git@github.com:dailydaniel/cool-whisper-server.git
-cd whisper_server
+cd cool-whisper-server
 ```
 4. Install dependencies:
 ```bash
