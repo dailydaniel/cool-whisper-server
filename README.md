@@ -7,6 +7,7 @@ Whisper Inference Server is an OpenAI compatible Elixir-based HTTP server for ru
 - CPU/GPU support: Choose between host (CPU) or cuda (GPU) backends for inference.
 - Dynamic configuration: Configure model, batch size, timeout, and other parameters at runtime.
 - Modular design: Clean architecture for easy extension and maintenance.
+- OpenAI compatible.
 
 ### Installation
 1.	Elixir installation
