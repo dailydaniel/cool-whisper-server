@@ -2,17 +2,14 @@ defmodule WhisperServer.Application do
   use Application
 
   def start(_type, _args) do
-    # Разбираем аргументы командной строки
     args = parse_args(System.argv())
 
-    # Передаём параметры в другие модули через Application.put_env
     Application.put_env(:whisper_server, :model_name, args[:model])
     Application.put_env(:whisper_server, :client, String.to_atom(args[:client]))
     Application.put_env(:whisper_server, :batch_size, args[:batch_size])
     Application.put_env(:whisper_server, :batch_timeout, args[:batch_timeout])
     Application.put_env(:whisper_server, :port, args[:port])
 
-    # Настраиваем супервизоры
     children = [
       WhisperServer.WhisperInference,
       {Plug.Cowboy, scheme: :http, plug: WhisperServer, options: [port: args[:port]]}
@@ -41,11 +38,11 @@ defmodule WhisperServer.Application do
     )
     |> elem(0)
     |> Enum.into(%{
-      batch_size: 3,                # Размер батча по умолчанию
-      batch_timeout: 3000,          # Тайм-аут батча по умолчанию
-      client: "host",               # Бекенд по умолчанию
-      model: "openai/whisper-tiny", # Модель по умолчанию
-      port: 4000                    # Порт по умолчанию
+      batch_size: 3,                
+      batch_timeout: 3000,        
+      client: "host",               
+      model: "openai/whisper-tiny", 
+      port: 4000                    
     })
   end
 end
