@@ -42,7 +42,7 @@ defmodule WhisperServer.Application do
       batch_timeout: 3000,        
       client: "host",               
       model: "openai/whisper-tiny", 
-      port: 4000                    
+      port: 4000
     })
   end
 end

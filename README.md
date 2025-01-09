@@ -22,11 +22,18 @@ sudo apt install ffmpeg
 git clone git@github.com:dailydaniel/cool-whisper-server.git
 cd cool-whisper-server
 ```
-4. Install dependencies:
+4. Fix .env if you need:
+current.env:
+```raw_text
+DEFAULT_DEVICE_ID=0
+MEMORY_FRACTION=0.9
+```
+5. Install dependencies:
 ```bash
 mix deps.get
+mix deps.compile
 ```
-5. Run the server:
+6. Run the server:
 ```bash
 mix run --no-halt -- \
     --batch_size 3 \
