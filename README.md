@@ -68,11 +68,5 @@ transcription = client.audio.transcriptions.create(
 - --client (default: host): Backend type for inference (host or cuda).
 - --model (default: openai/whisper-tiny): Name of the Whisper model from Hugging Face Hub.
 - --port (default: 4000): HTTP port to run the server.
-### Using the Server
-Send a POST request with an audio file to the /infer endpoint. For example:
-```bash
-curl -X POST -F "file=@path/to/audio.wav" http://localhost:4000/infer
-```
-The server will return the transcription result in JSON format.
 ### Contributing
 Contributions, issues, and feature requests are welcome. Feel free to submit a pull request or open an issue in the repository.
