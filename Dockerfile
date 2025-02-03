@@ -6,7 +6,7 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY mix.exs mix.lock ./
+COPY mix.exs ./
 RUN mix deps.get && mix deps.compile
 
 COPY . .
