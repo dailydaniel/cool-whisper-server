@@ -10,6 +10,26 @@ Whisper Inference Server is an OpenAI compatible Elixir-based HTTP server for ru
 - OpenAI compatible.
 
 ### Installation
+#### With Docker
+1. Clone the repository:
+```bash
+git clone git@github.com:dailydaniel/cool-whisper-server.git
+cd cool-whisper-server
+```
+2. Build:
+```bash
+docker build -t whisper_inference_server .
+```
+3. Run:
+```bash
+docker run -p 4000:4000 whisper_inference_server \
+  --batch_size=5 \
+  --batch_timeout=3000 \
+  --client=cuda \
+  --model=openai/whisper-large-v2 \
+  --port=4000
+```
+### From repo
 1.	Elixir installation
 If Elixir is not installed, follow the official guide.
 2.	FFmpeg installation
