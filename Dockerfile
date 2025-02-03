@@ -1,4 +1,4 @@
-FROM elixir:1.18.1-slim
+FROM ghcr.io/livebook-dev/livebook:0.14.7-cuda12
 
 RUN apt-get update && \
     apt-get install -y ffmpeg git build-essential && \

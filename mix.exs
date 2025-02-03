@@ -26,4 +26,8 @@ defmodule WhisperServer.MixProject do
       {:plug_cowboy, "~> 2.5"}
     ]
   end
+
+  defp elixirc_paths(_env) do
+    ["lib/whisper_server"]
+  end
 end

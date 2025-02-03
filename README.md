@@ -22,7 +22,7 @@ docker build -t whisper_inference_server .
 ```
 3. Run:
 ```bash
-docker run -p 4000:4000 whisper_inference_server \
+docker run --gpus all -p 4000:4000 whisper_inference_server \
   --batch_size=5 \
   --batch_timeout=3000 \
   --client=cuda \
